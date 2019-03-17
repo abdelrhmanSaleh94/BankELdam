@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:background="@color/colorGreyLighten5"
+    tools:context=".ui.fragment.NavCycle.PersonalFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/personal_Fg_Name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/Name"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <EditText
+                android:id="@+id/personal_Fg_Email"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/personal_Fg_Name"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <EditText
+                android:id="@+id/personal_Fg_birth"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/personal_Fg_Email"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:drawableStart="@drawable/ic_clender_vector"
+                android:focusable="false"
+                android:hint="@string/Birthday"
+                android:inputType="date"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <EditText
+                android:id="@+id/personal_Fg_Blood"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/personal_Fg_birth"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/blood"
+                android:inputType="text"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <EditText
+                android:id="@+id/personal_Fg_LastDate"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/personal_Fg_Blood"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:drawableStart="@drawable/ic_clender_vector"
+                android:focusable="false"
+                android:hint="@string/LastDay"
+                android:inputType="date"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <RelativeLayout
+                android:id="@+id/personal_Fg_RV_Country"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/personal_Fg_LastDate"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                >
+
+                <Spinner
+                    android:id="@+id/personal_Fg_Country"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:drawingCacheQuality="auto"
+                    android:prompt="@string/country"
+                    android:textAlignment="viewEnd"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/personal_Fg_RV_City"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_below="@id/personal_Fg_RV_Country"
+            android:background="@drawable/rounded_corner"
+            >
+            <Spinner
+                android:id="@+id/personal_Fg_City"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_corner"
+                android:paddingEnd="10dp"
+                android:prompt="@string/city" />
+        </RelativeLayout>
+            <EditText
+                android:id="@+id/personal_Fg_Phone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/personal_Fg_RV_City"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/Phone"
+                android:inputType="phone"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <EditText
+                android:id="@+id/personal_Fg_Password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/personal_Fg_Phone"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/Password"
+                android:inputType="textPassword"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <EditText
+                android:id="@+id/personal_Fg_returnPassword"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/personal_Fg_Password"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/returnPassword"
+                android:inputType="textPassword"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <Button
+                android:id="@+id/login_Frg_Btn_edit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/personal_Fg_returnPassword"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorBlueDark"
+                android:text="@string/edit"
+                android:textColor="@color/colorGreyLighten5"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>

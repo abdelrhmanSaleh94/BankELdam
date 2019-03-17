@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bcakground2"
+    tools:context=".ui.fragment.BloodRequest">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/NotToolbar2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/colorGreyLighten5"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="center"
+                    android:text="@string/bloodRequests"
+                    android:textSize="20sp" />
+            </android.support.v7.widget.Toolbar>
+
+            <EditText
+                android:id="@+id/BloodRequest_fr_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/NotToolbar2"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/name"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <EditText
+                android:id="@+id/BloodRequest_fr_age"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/BloodRequest_fr_name"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/age"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <EditText
+                android:id="@+id/BloodRequest_fr_bloodType"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/BloodRequest_fr_age"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/bloodType"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+        <RelativeLayout
+            android:id="@+id/BloodRequest_fr_BageSpinnerRe"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/BloodRequest_fr_bloodType"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_corner">
+            <Spinner
+                android:id="@+id/BloodRequest_fr_numberBages"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+            <EditText
+                android:id="@+id/BloodRequest_fr_hospitalName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/BloodRequest_fr_BageSpinnerRe"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/hospitalName"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <LinearLayout
+                android:id="@+id/BloodRequest_fr_LinerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_below="@id/BloodRequest_fr_hospitalName">
+
+                <ImageButton
+                    android:id="@+id/BloodRequest_fr_btnLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="7"
+                    android:background="@drawable/ic_location_svg" />
+
+                <EditText
+                    android:id="@+id/BloodRequest_fr_hospitalAdress"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:gravity="start"
+                    android:hint="@string/hospitalAdress"
+                    android:paddingStart="@dimen/margin10"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="@dimen/margin10"
+                    android:textDirection="rtl" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/BloodRequest_fr_CountryRe"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/BloodRequest_fr_LinerLayout"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner">
+
+                <Spinner
+                    android:id="@+id/BloodRequest_fr_Country"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/BloodRequest_fr_CityRe"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/BloodRequest_fr_CountryRe"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner">
+
+                <Spinner
+                    android:id="@+id/BloodRequest_fr_City"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/BloodRequest_fr_Phone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/BloodRequest_fr_CityRe"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/Phone"
+                android:inputType="phone"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <EditText
+                android:id="@+id/BloodRequest_fr_Notes"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@id/BloodRequest_fr_Phone"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="@string/Notes"
+                android:paddingEnd="10dp"
+                android:textAlignment="viewEnd" />
+
+            <Button
+                android:id="@+id/BloodRequest_fr_Enter"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/BloodRequest_fr_Notes"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorBlueDark"
+                android:paddingEnd="10dp"
+                android:text="@string/sendRequest"
+                android:textColor="@color/colorGreyLighten5"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>

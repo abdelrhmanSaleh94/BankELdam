@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.UserCycle.LoginFragment"
+
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher_background22" />
+
+        <ImageView
+            android:id="@+id/login_Frg_Image"
+            android:layout_width="120sp"
+            android:layout_height="120sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/ic_logo" />
+
+        <EditText
+            android:id="@+id/login_Frg_Ed_Phone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_Frg_Image"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/Phone"
+            android:padding="10dp"
+            android:inputType="phone"
+            android:textAlignment="viewEnd"
+            android:textSize="16sp"
+            android:textStyle="bold|italic" />
+
+        <EditText
+            android:id="@+id/login_Frg_Ed_Password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_Frg_Ed_Phone"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/Password"
+            android:inputType="textPassword"
+            android:paddingEnd="10dp"
+            android:textAlignment="textEnd"
+            android:textSize="16sp"
+            android:textStyle="bold|italic" />
+
+        <LinearLayout
+            android:id="@+id/login_Frg_Liner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_Frg_Ed_Password"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/login_Frg_Tv_ForgetPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:drawableEnd="@drawable/ic_alert_logo"
+                android:paddingEnd="50dp"
+                android:text="@string/ForgetPassword"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/login_Frg_CheckBox_RememberMe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:layoutDirection="rtl"
+                android:text="@string/RememberMe"
+                android:gravity="center|start"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:layout_marginTop="@dimen/margin10"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login_Frg_Btn_Login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_Frg_Liner"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/colorGreenAccent3"
+            android:text="@string/Login"
+            android:textColor="@color/colorGreyLighten5"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/login_Frg_Btn_Register"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_Frg_Btn_Login"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/colorBlueLighten"
+            android:text="@string/newAccount"
+            android:textColor="@color/colorGreyLighten5"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+
+    </RelativeLayout>
+
+</FrameLayout>
