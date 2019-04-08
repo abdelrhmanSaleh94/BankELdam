@@ -39,7 +39,7 @@ public class FavouriteFragment extends Fragment {
     RecyclerView favArticleRecyclerView;
     Unbinder unbinder;
     private LinearLayoutManager manager;
-    private List<PostsData> postsDataFavList = new ArrayList<>();
+    private List<PostsData> postsDataFavList;
     private PostsAdapter favAdapter;
     private String apiToken;
 
@@ -54,7 +54,8 @@ public class FavouriteFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate( R.layout.fragment_favourite, container, false );
         unbinder = ButterKnife.bind( this, view );
-        apiToken= SharedPreferencesManger.LoadStringData( getActivity(),"apiToken" );
+        postsDataFavList = new ArrayList<>();
+        apiToken = SharedPreferencesManger.LoadStringData( getActivity(), "apiToken" );
         LinearLayoutManager manager = new LinearLayoutManager( getContext() );
         favArticleRecyclerView.setLayoutManager( manager );
         favAdapter = new PostsAdapter( getContext(), postsDataFavList );

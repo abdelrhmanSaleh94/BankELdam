@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class NotificationCountData {
 
-    @SerializedName("notifications_count")
+    @SerializedName("notifications-count")
     @Expose
     private Integer notificationsCount;
 

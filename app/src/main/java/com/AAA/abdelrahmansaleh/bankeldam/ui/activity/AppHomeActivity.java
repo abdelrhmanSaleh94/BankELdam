@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -65,6 +66,7 @@ public class AppHomeActivity extends AppCompatActivity
     private ApiServices apiServices;
     private String apiToken;
     private String token;
+    private boolean doubleBackToExitPressedOnce = false;
 
 
     @Override
@@ -109,8 +111,24 @@ public class AppHomeActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
             HelperMethod.replaceFragment( new HomeFragment(), getSupportFragmentManager(), R.id.homeContainer, homeToolbarTV, "بنك الدم" );
+            super.onBackPressed();
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText( this, "Please click BACK again to exit", Toast.LENGTH_SHORT ).show();
+
+            new Handler().postDelayed( new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000 );
         }
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

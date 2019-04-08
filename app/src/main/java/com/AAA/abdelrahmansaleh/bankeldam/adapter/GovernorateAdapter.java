@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 public class GovernorateAdapter extends RecyclerView.Adapter<GovernorateAdapter.GovernorateViewHolder> {
     Context context;
     List<GovernoratesData> governoratesList = new ArrayList<>();
-    public List<Integer>governorateSelectedList=new ArrayList<>(  );
+    public List<String> governorateSelectedList = new ArrayList<>();
 
     public GovernorateAdapter(Context context, List<GovernoratesData> governoratesList) {
         this.context = context;
@@ -36,8 +36,18 @@ public class GovernorateAdapter extends RecyclerView.Adapter<GovernorateAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GovernorateViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final GovernorateViewHolder holder, final int position) {
         holder.checkBox.setText( governoratesList.get( position ).getName() );
+        holder.checkBox.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.checkBox.isChecked()) {
+                    governorateSelectedList.add( governoratesList.get( position ).getId().toString() );
+                } else {
+                    governorateSelectedList.remove( governoratesList.get( position ).getId().toString() );
+                }
+            }
+        } );
     }
 
     @Override
@@ -49,24 +59,11 @@ public class GovernorateAdapter extends RecyclerView.Adapter<GovernorateAdapter.
         private View view;
         @BindView(R.id.checkBox)
         CheckBox checkBox;
-        private String id;
 
         public GovernorateViewHolder(View itemView) {
             super( itemView );
             view = itemView;
             ButterKnife.bind( this, view );
-            checkBox.setOnClickListener( new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    id = String.valueOf( governoratesList.get( getAdapterPosition() ).getId() );
-                    if (checkBox.isChecked()){
-                        Toast.makeText( context, id, Toast.LENGTH_SHORT ).show();
-                        governorateSelectedList.add( Integer.valueOf( id ) );
-                    }else {
-                       governorateSelectedList.remove( Integer.valueOf( id ) );
-                    }
-                }
-            } );
         }
     }
 }

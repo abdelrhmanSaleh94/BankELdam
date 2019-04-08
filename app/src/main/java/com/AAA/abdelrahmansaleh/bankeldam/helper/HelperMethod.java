@@ -26,7 +26,6 @@ public class HelperMethod {
         if (tool_Bar_Tittle != null) {
             tool_Bar_Tittle.setText( tittle );
         }
-
     }
 
     public static void getDate(final EditText editText, Activity activity) {

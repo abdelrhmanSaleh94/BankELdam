@@ -15,9 +15,12 @@ import com.AAA.abdelrahmansaleh.bankeldam.adapter.BloodTypeAdapter;
 import com.AAA.abdelrahmansaleh.bankeldam.adapter.GovernorateAdapter;
 import com.AAA.abdelrahmansaleh.bankeldam.data.model.governorate.Governorates;
 import com.AAA.abdelrahmansaleh.bankeldam.data.model.governorate.GovernoratesData;
+import com.AAA.abdelrahmansaleh.bankeldam.data.model.listBloodType.ListBloodType;
+import com.AAA.abdelrahmansaleh.bankeldam.data.model.listBloodType.ListBloodTypeData;
 import com.AAA.abdelrahmansaleh.bankeldam.data.model.notificationsSettings.NotificationsSettings;
 import com.AAA.abdelrahmansaleh.bankeldam.data.rest.ApiServices;
 import com.AAA.abdelrahmansaleh.bankeldam.data.rest.RetrofitClient;
+import com.AAA.abdelrahmansaleh.bankeldam.helper.HelperMethod;
 import com.AAA.abdelrahmansaleh.bankeldam.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
@@ -43,13 +46,12 @@ public class NotificationSettingFragment extends Fragment {
     Unbinder unbinder;
     @BindView(R.id.cardBloodType_Rv)
     RecyclerView cardBloodTypeRv;
-    private List<GovernoratesData> governoratesList = new ArrayList<>();
-    private String[] blood = {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};
-    private List<String> bloodType = new ArrayList<>( Arrays.asList( blood ) );
+    private List<GovernoratesData> governoratesList;
     private GovernorateAdapter adapter;
     private BloodTypeAdapter adapterBloodType;
     private ApiServices apiServices;
     private String apiToken;
+    private List<ListBloodTypeData> bloodList;
 
     public NotificationSettingFragment() {
         // Required empty public constructor
@@ -62,12 +64,15 @@ public class NotificationSettingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate( R.layout.fragment_notification_setting, container, false );
         unbinder = ButterKnife.bind( this, view );
+        HelperMethod.showProgressDialog( getActivity(), "loading .... " );
+        bloodList = new ArrayList<>();
+        governoratesList = new ArrayList<>();
         apiServices = RetrofitClient.getClient().create( ApiServices.class );
         GridLayoutManager managerBlood = new GridLayoutManager( getContext(), 4 );
         cardBloodTypeRv.setLayoutManager( managerBlood );
-        adapterBloodType = new BloodTypeAdapter( getContext(), bloodType );
+        adapterBloodType = new BloodTypeAdapter( getContext(), bloodList );
         cardBloodTypeRv.setAdapter( adapterBloodType );
-        adapterBloodType.notifyDataSetChanged();
+        getBloodTypeList();
         getGovernorates();
         GridLayoutManager manager = new GridLayoutManager( getContext(), 3 );
         cardCountryRv.setLayoutManager( manager );
@@ -75,6 +80,25 @@ public class NotificationSettingFragment extends Fragment {
         cardCountryRv.setAdapter( adapter );
         apiToken = SharedPreferencesManger.LoadStringData( getActivity(), "apiToken" );
         return view;
+    }
+
+    private void getBloodTypeList() {
+        apiServices.getBloodList().enqueue( new Callback<ListBloodType>() {
+            @Override
+            public void onResponse(Call<ListBloodType> call, Response<ListBloodType> response) {
+                if (response.body().getStatus() == 1) {
+                    bloodList.addAll( response.body().getData() );
+                    adapterBloodType.notifyDataSetChanged();
+                } else {
+                    Toast.makeText( getContext(), response.body().getMsg(), Toast.LENGTH_SHORT ).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ListBloodType> call, Throwable t) {
+
+            }
+        } );
     }
 
     private void getGovernorates() {
@@ -85,6 +109,7 @@ public class NotificationSettingFragment extends Fragment {
                 if (response.body().getStatus() == 1) {
                     governoratesList.addAll( response.body().getData() );
                     adapter.notifyDataSetChanged();
+                    HelperMethod.dismissProgressDialog();
                 } else {
                     Toast.makeText( getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT ).show();
                 }
@@ -106,6 +131,7 @@ public class NotificationSettingFragment extends Fragment {
 
     @OnClick(R.id.fragmentNotification_btn_save)
     public void onViewClicked() {
+
         saveData();
     }
 

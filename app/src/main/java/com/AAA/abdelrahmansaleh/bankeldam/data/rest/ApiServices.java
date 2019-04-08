@@ -6,6 +6,7 @@ import com.AAA.abdelrahmansaleh.bankeldam.data.model.donation.DonationRequests;
 import com.AAA.abdelrahmansaleh.bankeldam.data.model.donationDetails.DonationDetails;
 import com.AAA.abdelrahmansaleh.bankeldam.data.model.donationRequests.DonationRequestPost;
 import com.AAA.abdelrahmansaleh.bankeldam.data.model.governorate.Governorates;
+import com.AAA.abdelrahmansaleh.bankeldam.data.model.listBloodType.ListBloodType;
 import com.AAA.abdelrahmansaleh.bankeldam.data.model.notificationsCount.NotificationsCount;
 import com.AAA.abdelrahmansaleh.bankeldam.data.model.notificationsList.NotificationsList;
 import com.AAA.abdelrahmansaleh.bankeldam.data.model.notificationsSettings.NotificationsSettings;
@@ -125,7 +126,7 @@ public interface ApiServices {
     @POST("notifications-settings")
     @FormUrlEncoded
     Call<NotificationsSettings> notificationSettings(@Field("api_token") String api_token,
-                                                     @Field("cities[]") List<Integer> citieList,
+                                                     @Field("governorates[]") List<String> citieList,
                                                      @Field("blood_types[]") List<String> blood_typesList);
 
     @POST("register-token")
@@ -146,4 +147,7 @@ public interface ApiServices {
     @GET("notifications")
     Call<NotificationsList> getNotificationsList(@Query("api_token") String api_token,
                                                  @Query("page") int page);
+
+    @GET("blood-types")
+    Call<ListBloodType> getBloodList();
 }

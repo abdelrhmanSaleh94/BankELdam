@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.AAA.abdelrahmansaleh.bankeldam.R;
+import com.AAA.abdelrahmansaleh.bankeldam.data.model.listBloodType.ListBloodTypeData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +20,11 @@ import butterknife.ButterKnife;
 
 public class BloodTypeAdapter extends RecyclerView.Adapter<BloodTypeAdapter.BloodTypeViewHolder> {
 
-    private Context context;
-    private List<String> bloodTypeList = new ArrayList<>();
     public List<String> bloodTypeSelectedList = new ArrayList<>();
+    private Context context;
+    private List<ListBloodTypeData> bloodTypeList = new ArrayList<>();
 
-    public BloodTypeAdapter(Context context, List<String> bloodTypeList) {
+    public BloodTypeAdapter(Context context, List<ListBloodTypeData> bloodTypeList) {
         this.context = context;
         this.bloodTypeList = bloodTypeList;
     }
@@ -36,9 +37,22 @@ public class BloodTypeAdapter extends RecyclerView.Adapter<BloodTypeAdapter.Bloo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BloodTypeViewHolder holder, int position) {
-        holder.checkBox.setText( bloodTypeList.get( position ) );
+    public void onBindViewHolder(@NonNull final BloodTypeViewHolder holder, final int position) {
+        holder.checkBox.setText( bloodTypeList.get( position ).getName() );
 
+        holder.checkBox.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListBloodTypeData type = bloodTypeList.get( position );
+                if (holder.checkBox.isChecked()) {
+                    bloodTypeSelectedList.add( type.getId().toString() );
+                    Toast.makeText( context, "add" + type.getId().toString(), Toast.LENGTH_SHORT ).show();
+                } else {
+                    bloodTypeSelectedList.remove( type.getId().toString() );
+                    Toast.makeText( context, "remove" + type.getId().toString(), Toast.LENGTH_SHORT ).show();
+                }
+            }
+        } );
     }
 
     @Override
@@ -50,25 +64,11 @@ public class BloodTypeAdapter extends RecyclerView.Adapter<BloodTypeAdapter.Bloo
         private final View view;
         @BindView(R.id.checkBox)
         CheckBox checkBox;
-        private String type;
 
         public BloodTypeViewHolder(View itemView) {
             super( itemView );
             view = itemView;
             ButterKnife.bind( this, view );
-            checkBox.setOnClickListener( new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    type = bloodTypeList.get( getAdapterPosition() );
-                    if (checkBox.isChecked()) {
-                        bloodTypeSelectedList.add( type );
-                    } else {
-                        bloodTypeSelectedList.remove( type );
-                        Toast.makeText( context, "Remove"+type, Toast.LENGTH_SHORT ).show();
-                    }
-
-                }
-            } );
         }
     }
 }

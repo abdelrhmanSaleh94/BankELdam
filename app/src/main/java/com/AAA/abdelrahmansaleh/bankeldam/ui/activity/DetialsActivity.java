@@ -1,5 +1,6 @@
 package com.AAA.abdelrahmansaleh.bankeldam.ui.activity;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,14 +23,14 @@ public class DetialsActivity extends AppCompatActivity {
         if (postId != 0) {
             ArticleDetailsFragment fragment = new ArticleDetailsFragment();
             Bundle bundle = new Bundle();
-            bundle.putInt( "bundlePostsId",  postId  );
+            bundle.putInt( "bundlePostsId", postId );
             fragment.setArguments( bundle );
             HelperMethod.replaceFragment( fragment, getSupportFragmentManager(), R.id.DetialsActivity_frame, null, null );
         }
-        if (intentBloodId!=0){
-            BloodRequestDetailsFragment fragment=new BloodRequestDetailsFragment();
-            Bundle bundle=new Bundle(  );
-            bundle.putInt( "bundleBloodId",intentBloodId );
+        if (intentBloodId != 0) {
+            BloodRequestDetailsFragment fragment = new BloodRequestDetailsFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt( "bundleBloodId", intentBloodId );
             fragment.setArguments( bundle );
             HelperMethod.replaceFragment( fragment, getSupportFragmentManager(), R.id.DetialsActivity_frame, null, null );
 
@@ -37,5 +38,8 @@ public class DetialsActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
